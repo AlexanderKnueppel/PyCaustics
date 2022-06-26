@@ -1,6 +1,7 @@
 # This is the ppm-example from "Raytracing in one weekend"
 
 import array
+from tqdm import tqdm
 
 width = 256;
 height = 256;
@@ -10,7 +11,9 @@ header = "P6 {} {} 255\n".format(width, height);
 # Binary black
 image = array.array('B', [0,0,0] * width * height)
 
-for j in range(0,height):
+print("Render image...")
+
+for j in tqdm (range(0,height), desc="Render..."):
     for i in range(0,width):
         index = j * 3 * width  + 3*i
         r = float(i) / (width-1)
