@@ -13,7 +13,7 @@ A very simple toy raytracer written in Python to re-familiarize with Python. The
 Clone (or download) this repository and install dependencies via pip:
 
 ```
-pip install to-requirements.txt
+pip install -r requirements.txt
 ```
 
 ## Personal ToDo List for Advanced Features (will be updated)
