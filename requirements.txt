@@ -1,0 +1,5 @@
+certifi==2021.5.30
+numpy==1.19.5
+Pillow==8.4.0
+pycparser==2.21
+wincertstore==0.2
