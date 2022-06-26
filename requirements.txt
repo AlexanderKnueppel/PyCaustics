@@ -1,5 +1,9 @@
 certifi==2021.5.30
+colorama==0.4.5
+importlib-resources==5.4.0
 numpy==1.19.5
 Pillow==8.4.0
 pycparser==2.21
+tqdm==4.64.0
 wincertstore==0.2
+zipp==3.6.0
