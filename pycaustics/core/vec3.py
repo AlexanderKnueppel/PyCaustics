@@ -78,6 +78,12 @@ class Vec3:
         else:
             raise ValueError(f'{index} is not a valid index (only 0, 1, or 2 are allowed).')
 
+class Point3(Vec3):
+    pass
+
+class Color(Vec3):
+    pass
+
 def dot(v1:Vec3, v2:Vec3):
     return v1[0]*v2[0] + v1[1]*v2[1] + v1[2]*v2[2]
 
