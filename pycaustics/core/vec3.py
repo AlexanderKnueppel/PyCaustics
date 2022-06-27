@@ -1,5 +1,4 @@
 import math
-from re import X
 
 class Vec3:
     def __init__(self, x = 0, y = 0, z = 0):
@@ -39,13 +38,17 @@ class Vec3:
         """Scalar multiplication (v2 = v1 * s)"""
         return Vec3(self.x*s, self.y*s, self.z*s)
 
+    def __rmul__(self, s):
+        """Scalar multiplication (v2 = v1 * s)"""
+        return Vec3(self.x*s, self.y*s, self.z*s)
+
     def __imul__(self, s):
         """Inplace multiplication"""
         self.x+=s
         self.y+=s
         self.z+=s
 
-    def __div__(self, s):
+    def __truediv__(self, s):
         """Scalar division (v2 = v1 / s)"""
         return Vec3(float(self.x)/s, float(self.y)/s, float(self.z)/s)
 
@@ -55,7 +58,7 @@ class Vec3:
         self.y/=s
         self.z/=s
 
-    def __len__(self):
+    def length(self):
         """Returns the length of this vector"""
         return math.sqrt(self.lengthSq())
 
@@ -91,7 +94,7 @@ def cross(v1:Vec3, v2:Vec3):
     return Vec3(v1[1]*v2[2] - v1[2]*v2[1], v1[2]*v2[0] - v1[0]*v2[2], v1[0]*v2[1] - v1[1]*v2[0])
 
 def normalize(v:Vec3):
-    return v / len(v)
+    return v / v.length()
 
 
 
