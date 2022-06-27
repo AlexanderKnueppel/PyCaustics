@@ -77,3 +77,15 @@ class Vec3:
             return self.z
         else:
             raise ValueError(f'{index} is not a valid index (only 0, 1, or 2 are allowed).')
+
+def dot(v1:Vec3, v2:Vec3):
+    return v1[0]*v2[0] + v1[1]*v2[1] + v1[2]*v2[2]
+
+def cross(v1:Vec3, v2:Vec3):
+    return Vec3(v1[1]*v2[2] - v1[2]*v2[1], v1[2]*v2[0] - v1[0]*v2[2], v1[0]*v2[1] - v1[1]*v2[0])
+
+def normalize(v:Vec3):
+    return v / len(v)
+
+
+
