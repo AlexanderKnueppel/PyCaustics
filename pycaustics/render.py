@@ -3,13 +3,19 @@ from tqdm import tqdm
 from core.camera import Camera
 from core.ray import Ray
 from core.vec3 import *
+from shapes.sphere import *
 from util.image import *
 
 # Create camera
 camera = Camera()
 
+# Sphere object
+sphere = Sphere(Point3(0,0,-1), 0.5)
+
 # Dummy method for now
 def pixel_color(r:Ray):
+    if sphere.hit(r):
+        return sphere.color()
     dir = normalize(r.direction)
     t = 0.5*(dir.y + 1.0)
     return (1.0-t)*Color(1.0,1.0,1.0) + t*Color(0.5,0.7,1.0)
