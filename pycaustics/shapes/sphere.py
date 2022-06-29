@@ -17,8 +17,9 @@ class Sphere:
 
         return (-b-math.sqrt(d)) / (2*a)
 
-    def color(self) -> Color:
-        return Color(1,0,0)
+    def color(self, hit_point) -> Color:
+        N = normalize(hit_point - self.center)
+        return 0.5*Color(N.x+1,N.y+1,N.z+1)
         
 
 

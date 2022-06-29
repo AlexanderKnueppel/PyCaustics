@@ -14,8 +14,9 @@ sphere = Sphere(Point3(0,0,-1), 0.5)
 
 # Dummy method for now
 def pixel_color(r:Ray):
-    if sphere.hit(r):
-        return sphere.color()
+    t = sphere.hit(r)
+    if t > 0.0:
+        return sphere.color(r.at(t))
     dir = normalize(r.direction)
     t = 0.5*(dir.y + 1.0)
     return (1.0-t)*Color(1.0,1.0,1.0) + t*Color(0.5,0.7,1.0)
