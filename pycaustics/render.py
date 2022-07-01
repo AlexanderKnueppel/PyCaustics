@@ -4,6 +4,7 @@ from core.camera import Camera
 from core.ray import Ray
 from core.vec3 import *
 from shapes.sphere import *
+from shapes.Rectangle import *
 from util.image import *
 
 # Create camera
@@ -12,11 +13,23 @@ camera = Camera()
 # Sphere object
 sphere = Sphere(Point3(0,0,-1), 0.5)
 
+#Rectangle
+rectangle = RectangleAA()#Rectangle(Point3(0,0,-1),Point3(0,0.5,-1),Point3(0.5,0.5,-1))
+
 # Dummy method for now
 def pixel_color(r:Ray):
     t = sphere.hit(r)
     if t > 0.0:
         return sphere.color(r.at(t))
+    dir = normalize(r.direction)
+    t = 0.5*(dir.y + 1.0)
+    return (1.0-t)*Color(1.0,1.0,1.0) + t*Color(0.5,0.7,1.0)
+
+# Second dummy method for now
+def pixel_color_rectangle(r:Ray):
+    t = rectangle.hit(r)
+    if t > 0.0:
+        return rectangle.color(r.at(t))
     dir = normalize(r.direction)
     t = 0.5*(dir.y + 1.0)
     return (1.0-t)*Color(1.0,1.0,1.0) + t*Color(0.5,0.7,1.0)
@@ -34,7 +47,7 @@ for j in tqdm (range(0,camera.screen_height), desc="Render..."):
         v = float(camera.screen_height - 1 - j) / (camera.screen_height-1.0)
 
         r = Ray(camera.origin, camera.lower_left_corner + camera.right*u + camera.up*v - camera.origin)
-        pc = pixel_color(r)
+        pc = pixel_color_rectangle(r)
         image[index] = int(255.999*pc[0])
         image[index+1] = int(255.999*pc[1])
         image[index+2] = int(255.999*pc[2])
